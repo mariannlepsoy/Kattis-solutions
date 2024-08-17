@@ -6,18 +6,18 @@ def print_alphabet():
     characters = alphabet[:alphabet.rfind(highest_letter)+1]
     all_lines = read_all_lines(n)
     prefix = [False]
-    #Two graphs: outedges (children) and inedges (parents)
+    # Two graphs: outedges (children) and inedges (parents)
     outedges, inedges = create_graph_outedges(all_lines, n, characters, prefix)
     new_alphabet = []
     visited = []
     current_path = []
     cycle = [False]
-    #All nodes without parents.
+    # All nodes without parents.
     roots = find_nodes(inedges)
-    #All nodes without children.
+    # All nodes without children.
     end_nodes = find_nodes(outedges)
 
-    #Run dfs
+    # dfs
     for root in roots:
         if root not in visited:
             dfs(root, outedges, visited, new_alphabet, current_path, cycle)
@@ -48,12 +48,12 @@ def create_graph_outedges(all_lines, n, characters, prefix):
         word1 = all_lines[i] 
         word2 = all_lines[i+1]
 
-        #Checks if word1 is a prefix of word2, if so it should be impossible.
+        # Checks if word1 is a prefix of word2, if so it should be impossible.
         if len(word1) > len(word2) and word1[:len(word2)] == word2:
             prefix[0] = True
             break
         
-        #Compare two and two characters until one differing one can be found.
+        # Compare two and two characters until one differing one can be found.
         for j in range(min(len(word1), len(word2))):
             if word1[j] != word2[j]:
                 outedges[word1[j]].append(word2[j])
@@ -67,7 +67,7 @@ def dfs(letter, outedges, visited, new_alphabet, current_path, cycle):
     visited.append(letter)
     if letter in outedges:
         for neighbor in outedges[letter]:
-            #Check for cycle. If cycle it should be impossible.
+            # Check for cycle. If cycle it should be impossible.
             if neighbor in current_path:
                 cycle[0] = True
             if neighbor not in visited:
@@ -75,12 +75,12 @@ def dfs(letter, outedges, visited, new_alphabet, current_path, cycle):
     new_alphabet.append(letter)
     current_path.remove(letter)
 
-#Creates new alphabet.
+# Creates new alphabet.
 def create_alphabet(new_alphabet):
     new_alphabet = new_alphabet[::-1]
     return ''.join(new_alphabet)
 
-#Check for more than one key with empty list as value. Used for AMBIGUOUS case.
+# Check for more than one key with empty list as value. Used for AMBIGUOUS case.
 def find_nodes(edges):
     list = []
     for letter in edges:

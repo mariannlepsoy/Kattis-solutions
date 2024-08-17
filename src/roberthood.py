@@ -10,7 +10,6 @@ def read_input():
         points.append((int(x), int(y)))
     return points
 
-# Function taken from lecture slide
 def graham_scan(points):
     points = sorted(set(points))
     s, hull = [], []

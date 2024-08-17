@@ -18,7 +18,6 @@ def solution():
 
         stdout.write(f"{a}\n")
 
-# Function taken from lecture slide
 def graham_scan(points):
     points = sorted(set(points))
     s, hull = [], []

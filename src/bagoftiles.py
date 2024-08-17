@@ -30,8 +30,5 @@ def solution():
         invalid = total_combinations - valid
 
         stdout.write(f"Game {i+1} -- {valid} : {invalid}\n")
-        
-        for i in count_sums:
-            print(i)
 
 solution()

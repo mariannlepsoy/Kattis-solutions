@@ -1,7 +1,6 @@
 from sys import stdin, stdout
 from collections import deque
 
-#Bfs where you start with first input and check all clicks.
 def bfs():
     start = stdin.readline().strip()
     end = stdin.readline().strip()

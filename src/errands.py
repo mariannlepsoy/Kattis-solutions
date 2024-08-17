@@ -76,8 +76,6 @@ def solution():
                 stdout.write(f"{index_to_place[place]} ")
             stdout.write("\n")
 
-            print(graph)
-
         else:
             break
 
