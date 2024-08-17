@@ -1,4 +1,4 @@
-# Kattis Problems Solutions
+# Kattis Problem Solutions
 
 | Problem Descrition             | Solutions |
 | ------------------------------ | --------- |
